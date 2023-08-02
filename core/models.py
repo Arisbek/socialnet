@@ -21,8 +21,14 @@ class Post(models.Model):
             return self.name
 
 class Category(models.Model):
+    l = ((1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5)
+    )
     name=models.CharField('Наименование столбца', max_length=50, null=True)
-    rating=models.IntegerField(1,10)
+    rating=models.PositiveSmallIntegerField(choices=l)
     class Meta:
         verbose_name = "категория"
         verbose_name_plural = "категории"
