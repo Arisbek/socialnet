@@ -14,6 +14,7 @@ class Post(models.Model):
     description=models.TextField(null=True,blank=True)
     photo=models.ImageField(null=True,blank=True)
     status=models.Choices("Опубликован","Не опубликован")
+    likes=models.PositiveIntegerField(default=0)
     class Meta:
         verbose_name = "пост"
         verbose_name_plural = "посты"
@@ -34,3 +35,24 @@ class Category(models.Model):
         verbose_name_plural = "категории"
     def __str__(self):
         return self.name
+
+class Short(models.Model):
+     user = models.ManyToManyField(
+          to=User,
+          null=True,
+          blank=False,
+          verbose_name='Автор',
+          related_name='short'
+     )
+     video = models.FileField(upload_to='video_post/',null=True,blank=True)
+     data = models.DateField(auto_now_add=True)
+     views = models.PositiveIntegerField(default=0)
+
+class SavedPost(models.Model):
+     user = models.OneToOneField(
+        to=User,
+        on_delete=models.CASCADE
+    )
+     post = models.ManyToManyField(
+        to=Post,
+     )
