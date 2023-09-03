@@ -1,13 +1,12 @@
 <h2>Shorts:</h2>
-{% for short in shorts%}
+{% for short in shorts %}
     <a href="/short/{{short.id}}">
         <div>
-            {{short.id}}
+            #{{short.id}}
         </div>
     </a>
 {% endfor %}
 <hr>
-<h2>Homepage</h2>
-<div><a href="">homepage</a></div>
+<div><a href="/home">homepage</a></div>
 <div><a href="/shorts">shorts</a></div>
 <div><a href="/categories">categories</a></div>

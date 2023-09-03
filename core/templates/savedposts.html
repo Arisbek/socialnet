@@ -1,0 +1,17 @@
+<h2>Сохраненные посты:</h2>
+{% for post in user.posts.all %}
+    <a href="/post/{{post.id}}">
+        <div>
+            {{post.id}}
+        </div>
+    </a>
+    {% if post.photo %}
+        <div>
+            <img src={{post.photo.url}}>
+        </div>
+    {% endif %}
+    <hr>
+{% endfor %}
+<div><a href="/home">homepage</a></div>
+<div><a href="/shorts">shorts</a></div>
+<div><a href="/categories">categories</a></div>

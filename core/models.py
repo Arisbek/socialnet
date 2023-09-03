@@ -15,12 +15,22 @@ class Post(models.Model):
     photo=models.ImageField(null=True,blank=True)
     status=models.Choices("Опубликован","Не опубликован")
     likes=models.PositiveIntegerField(default=0)
+    creator = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False, 
+        verbose_name="Автор поста",
+        related_name="posts"
+    )
+
     class Meta:
         verbose_name = "пост"
         verbose_name_plural = "посты"
+    
     def __str__(self):
             return self.name
-
+    
 class Category(models.Model):
     l = ((1, 1),
         (2, 2),
@@ -48,11 +58,34 @@ class Short(models.Model):
      data = models.DateField(auto_now_add=True)
      views = models.PositiveIntegerField(default=0)
 
-class SavedPost(models.Model):
+class SavedPosts(models.Model):
      user = models.OneToOneField(
         to=User,
         on_delete=models.CASCADE
-    )
+     )
      post = models.ManyToManyField(
         to=Post,
      )
+     class Meta:
+        verbose_name = 'saved post'
+        verbose_name_plural = 'saved posts'
+
+     def __str__(self):
+        return f'{self.user}'
+
+class Comment(models.Model):
+     post = models.OneToOneField(
+        to=Post,
+        on_delete=models.CASCADE
+    )
+     comment_text = models.TextField()
+     likes = models.IntegerField(default=0)
+     created = models.DateTimeField(auto_now_add=True)
+
+     def __str__(self):
+          return self.comment_text[:20]
+     
+     class Meta:
+          verbose_name = 'Коммент'
+          verbose_name_plural = 'Комменты'
+          ordering = ['created']

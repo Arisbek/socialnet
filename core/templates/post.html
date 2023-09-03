@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>{{post.name}}</h2>
+        <div>Автор: 
+            <a href= "{% url 'profile' post.creator.profile.id %}">{{post.creator.username}}</a></div>
+        <div>Описание: {{post.description}}</div>
+        {% if post.photo %}
+            <div>
+                <img src="{{post.photo.url}}">
+            </div>
+        {% endif %}
+        <div>статус: {{post.status}}</div>
+        <div>количество лайков: {{post.likes}}</div>
+        <hr>
+        <div><a href="/home">homepage</a></div>
+        <div><a href="/shorts">shorts</a></div>
+        <div><a href="/categories">categories</a></div>
+    </body>
+</html>

@@ -3,4 +3,5 @@ venv/
 *.pyc
 __pycache__/
 .idea/
-video
+media
+static
