@@ -1,7 +1,6 @@
-<h2>{{category.name}}</h2>
-<div>{{category.rating}}</div>
-<hr>
-<h2>Homepage</h2>
-<div><a href="/home">homepage</a></div>
-<div><a href="/shorts">shorts</a></div>
-<div><a href="/categories">categories</a></div>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{category.name}}</h2>
+    <div>{{category.rating}}</div>
+{% endblock %}

@@ -1,13 +1,13 @@
-<h2>Категории:</h2>
-{% for category in categories%}
-    <a href="/category/{{category.id}}">
-        <div>
-            {{category.name}}
-        </div>
-    </a>
-{% endfor %}
-<hr>
-<h2>Homepage</h2>
-<div><a href="/home">homepage</a></div>
-<div><a href="/shorts">shorts</a></div>
-<div><a href="/categories">categories</a></div>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Категории:</h2>
+    {% for category in categories%}
+        <a href="/category/{{category.id}}">
+            <div>
+                {{category.name}}
+            </div>
+        </a>
+    {% endfor %}
+
+{% endblock %}

@@ -1,12 +1,12 @@
-<h2>Shorts:</h2>
-{% for short in shorts %}
-    <a href="/short/{{short.id}}">
-        <div>
-            #{{short.id}}
-        </div>
-    </a>
-{% endfor %}
-<hr>
-<div><a href="/home">homepage</a></div>
-<div><a href="/shorts">shorts</a></div>
-<div><a href="/categories">categories</a></div>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Shorts:</h2>
+    {% for short in shorts %}
+        <a href="/short/{{short.id}}">
+            <div>
+                #{{short.id}}
+            </div>
+        </a>
+    {% endfor %}
+    {% endblock %}

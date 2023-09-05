@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+
+{% block content %}
     <head>
-        <h1>Profile</h1>
+        <title>Document</title>
     </head>
     <body>
         <h2>{{ user.username }}</h2>
@@ -9,14 +10,13 @@
         <div>О себе: {{ user.profile.description }}</div>
         <h3>Посты:</h3>
         {% for post in user.posts.all %}
-            <div>{{ post.name }}</div>
-            {% if post.photo %}
-                <a href="/post/{{ post.id }}"><img src="{{ post.photo.url }}" alt="image"></a>
-            {% endif %}
+            <div class="post">
+                <div>{{ post.name }}</div>
+                {% if post.photo %}
+                    <a href="/post/{{ post.id }}"><img src="{{ post.photo.url }}" alt="image"></a>
+                {% endif %}
+            </div>
             <hr>
         {% endfor %}
-        <div><a href="/home">homepage</a></div>
-        <div><a href="/shorts">shorts</a></div>
-        <div><a href="/categories">categories</a></div>
     </body>
-</html>
+    {% endblock %}
